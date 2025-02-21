@@ -1,1 +1,36 @@
 hello one
+# fibonacci_prime.py
+# A Python script that generates the Fibonacci sequence up to a given number
+# and checks if a number is prime.
+
+# Function to generate Fibonacci sequence up to n
+def fibonacci(n):
+    fib_sequence = [0, 1]
+    while fib_sequence[-1] + fib_sequence[-2] <= n:
+        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])
+    return fib_sequence
+
+# Function to check if a number is prime
+def is_prime(num):
+    if num <= 1:
+        return False
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+# Main function
+def main():
+    # Get user input for the maximum number in the Fibonacci sequence
+    max_number = int(input("Enter the maximum number for the Fibonacci sequence: "))
+    
+    # Generate the Fibonacci sequence up to the max number
+    fib_seq = fibonacci(max_number)
+    print(f"Fibonacci sequence up to {max_number}: {fib_seq}")
+    
+    # Check which numbers in the Fibonacci sequence are prime
+    prime_numbers = [num for num in fib_seq if is_prime(num)]
+    print(f"Prime numbers in the Fibonacci sequence: {prime_numbers}")
+
+if __name__ == "__main__":
+    main()
